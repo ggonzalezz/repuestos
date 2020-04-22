@@ -120,9 +120,11 @@ switch ($_GET["op"]){
  				"0"=>'<button class="btn btn-warning" onclick="agregarDetalle('.$reg->idarticulo.',\''.$reg->nombre.'\')"><span class="fa fa-plus"></span></button>',
  				"1"=>$reg->nombre,
  				"2"=>$reg->categoria,
-                "3"=>$reg->medida,
- 				"4"=>$reg->stock,
- 				"5"=>"<img src='../files/articulos/".$reg->imagen."' height='50px' width='50px' >"
+                "3"=>$reg->color,
+                "4"=>$reg->modelo,
+                "5"=>$reg->marca,
+ 				"6"=>$reg->stock,
+ 				"7"=>"<img src='../files/articulos/".$reg->imagen."' height='50px' width='50px' >"
  				);
  		}
  		$results = array(

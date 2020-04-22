@@ -156,7 +156,9 @@ if ($_SESSION['ventas']==1)
                 <th>Opciones</th>
                 <th>Nombre</th>
                 <th>Categoría</th>
-      <th>Medida</th>
+                <th>Color</th>
+                <th>Modelo</th>
+                <th>Marca</th>
                 <th>Stock</th>
                 <th>Precio Venta</th>
                 <th>Imagen</th>
@@ -168,7 +170,9 @@ if ($_SESSION['ventas']==1)
               <th>Opciones</th>
                 <th>Nombre</th>
                 <th>Categoría</th>
-      <th>Medida</th>
+                <th>Color</th>
+                 <th>Modelo</th>
+                <th>Marca</th>
                 <th>Stock</th>
                 <th>Precio Venta</th>
                 <th>Imagen</th>

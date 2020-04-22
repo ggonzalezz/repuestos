@@ -136,10 +136,12 @@ switch ($_GET["op"]){
  				"0"=>'<button class="btn btn-warning" onclick="agregarDetalle('.$reg->idarticulo.',\''.$reg->nombre.'\',\''.$reg->precio_venta.'\')"><span class="fa fa-plus"></span></button>',
  				"1"=>$reg->nombre,
  				"2"=>$reg->categoria,
-                "3"=>$reg->medida,
- 				"4"=>$reg->stock,
- 				"5"=>$reg->precio_venta,
- 				"6"=>"<img src='../files/articulos/".$reg->imagen."' height='50px' width='50px' >"
+                "3"=>$reg->color,
+                "4"=>$reg->marca,
+                "5"=>$reg->modelo,
+ 				"6"=>$reg->stock,
+ 				"7"=>$reg->precio_venta,
+ 				"8"=>"<img src='../files/articulos/".$reg->imagen."' height='50px' width='50px' >"
  				);
  		}
  		$results = array(

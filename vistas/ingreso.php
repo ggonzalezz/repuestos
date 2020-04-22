@@ -131,7 +131,7 @@ if ($_SESSION['compras']==1)
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="width: 50% !important;">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -140,10 +140,12 @@ if ($_SESSION['compras']==1)
         <div class="modal-body">
           <table id="tblarticulos" class="table table-striped table-bordered table-condensed table-hover">
             <thead>
-                <th>Opciones</th>
+                <th>Op.</th>
                 <th>Nombre</th>
-                <th>Categoría</th>
-                <th>Medida</th>
+                <th>Categoia</th>
+                <th>Color</th>
+                <th>Modelo</th>
+                <th>Marca</th>
    
                 <th>Stock</th>
                 <th>Imagen</th>
@@ -152,10 +154,12 @@ if ($_SESSION['compras']==1)
               
             </tbody>
             <tfoot>
-              <th>Opciones</th>
+              <th>Op.</th>
                 <th>Nombre</th>
-                <th>Categoría</th>
-        <th>Medida</th>
+                <th>Categoia</th>
+                <th>Color</th>
+                <th>Modelo</th>
+                <th>Marca</th>
                 <th>Stock</th>
                 <th>Imagen</th>
             </tfoot>

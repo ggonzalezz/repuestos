@@ -34,7 +34,9 @@ if ($_SESSION['almacen']==1)
                             <th>Opciones</th>
                             <th>Nombre</th>
                             <th>Categoría</th>
-                            <th>Medida</th>
+                            <th>color</th>
+                            <th>Modelo</th>
+                            <th>Marca</th>
                             <th>Stock</th>
                             <th>Imagen</th>
                             <th>Estado</th>
@@ -45,7 +47,9 @@ if ($_SESSION['almacen']==1)
                             <th>Opciones</th>
                             <th>Nombre</th>
                             <th>Categoría</th>
-                             <th>Medida</th>
+                             <th>color</th>
+                            <th>Modelo</th>
+                            <th>Marca</th>
                             <th>Stock</th>
                             <th>Imagen</th>
                             <th>Estado</th>
@@ -63,11 +67,20 @@ if ($_SESSION['almacen']==1)
                             <label>Categoría(*):</label>
                             <select id="idcategoria" name="idcategoria" class="form-control selectpicker" data-live-search="true" required></select>
                           </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Medida:</label>
-                            <input type="text" class="form-control" name="medida" id="medida" maxlength="256" placeholder="Medida" required>
+                          
+                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>Color(*):</label>
+                            <select id="idcolor" name="idcolor" class="form-control selectpicker" data-live-search="true" required></select>
                           </div>
-                         
+                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>Modelo(*):</label>
+                            <select id="idmodelo" name="idmodelo" class="form-control selectpicker" data-live-search="true" required></select>
+                          </div>
+                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>Marca(*):</label>
+                            <select id="idmarca" name="idmarca" class="form-control selectpicker" data-live-search="true" required></select>
+                          </div>
+                   
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Descripción:</label>
                             <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="256" placeholder="Descripción">

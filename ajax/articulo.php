@@ -5,7 +5,9 @@ $articulo=new Articulo();
 
 $idarticulo=isset($_POST["idarticulo"])? limpiarCadena($_POST["idarticulo"]):"";
 $idcategoria=isset($_POST["idcategoria"])? limpiarCadena($_POST["idcategoria"]):"";
-$medida=isset($_POST["medida"])? limpiarCadena($_POST["medida"]):"";
+$idcolor=isset($_POST["idcolor"])? limpiarCadena($_POST["idcolor"]):"";
+$idmodelo=isset($_POST["idmodelo"])? limpiarCadena($_POST["idmodelo"]):"";
+$idmarca=isset($_POST["idmarca"])? limpiarCadena($_POST["idmarca"]):"";
 $nombre=isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
 $descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):"";
 $imagen=isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
@@ -27,11 +29,11 @@ switch ($_GET["op"]){
 			}
 		}
 		if (empty($idarticulo)){
-			$rspta=$articulo->insertar($idcategoria,$medida,$nombre,$descripcion,$imagen);
+			$rspta=$articulo->insertar($idcategoria,$idcolor,$idmodelo,$idmarca,$nombre,$descripcion,$imagen);
 			echo $rspta ? "Artículo registrado" : "Artículo no se pudo registrar";
 		}
 		else {
-			$rspta=$articulo->editar($idarticulo,$idcategoria,$medida,$nombre,$descripcion,$imagen);
+			$rspta=$articulo->editar($idarticulo,$idcategoria,$idcolor,$idmodelo,$idmarca,$nombre,$descripcion,$imagen);
 			echo $rspta ? "Artículo actualizado" : "Artículo no se pudo actualizar";
 		}
 	break;
@@ -65,10 +67,12 @@ switch ($_GET["op"]){
  					' <button class="btn btn-primary" onclick="activar('.$reg->idarticulo.')"><i class="fa fa-check"></i></button>',
  				"1"=>$reg->nombre,
  				"2"=>$reg->categoria,
-                "3"=>$reg->medida,
- 				"4"=>$reg->stock,
- 				"5"=>"<img src='../files/articulos/".$reg->imagen."' height='50px' width='50px' >",
- 				"6"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':
+                "3"=>$reg->color,
+                "4"=>$reg->modelo,
+                "5"=>$reg->marca,
+ 				"6"=>$reg->stock,
+ 				"7"=>"<img src='../files/articulos/".$reg->imagen."' height='50px' width='50px' >",
+ 				"8"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':
  				'<span class="label bg-red">Desactivado</span>'
  				);
  		}
@@ -90,6 +94,40 @@ switch ($_GET["op"]){
 		while ($reg = $rspta->fetch_object())
 				{
 					echo '<option value=' . $reg->idcategoria . '>' . $reg->nombre . '</option>';
+				}
+	break;
+        
+    case "selectColor":
+		require_once "../modelos/Color.php";
+		$color = new Color();
+
+		$rspta = $color->select();
+
+		while ($reg = $rspta->fetch_object())
+				{
+					echo '<option value=' . $reg->idcolor . '>' . $reg->nombre . '</option>';
+				}
+	break;
+    case "selectModelo":
+		require_once "../modelos/Modelo.php";
+		$modelo = new Modelo();
+
+		$rspta = $modelo->select();
+
+		while ($reg = $rspta->fetch_object())
+				{
+					echo '<option value=' . $reg->idmodelo . '>' . $reg->nombre . '</option>';
+				}
+	break;
+    case "selectMarca":
+		require_once "../modelos/Marca.php";
+		$marca = new Marca();
+
+		$rspta = $marca->select();
+
+		while ($reg = $rspta->fetch_object())
+				{
+					echo '<option value=' . $reg->idmarca . '>' . $reg->nombre . '</option>';
 				}
 	break;
         

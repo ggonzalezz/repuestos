@@ -17,6 +17,23 @@ function init(){
 
 	});
   
+    $.post("../ajax/articulo.php?op=selectColor", function(r){
+	            $("#idcolor").html(r);
+	            $('#idcolor').selectpicker('refresh');
+
+	});
+    
+    $.post("../ajax/articulo.php?op=selectModelo", function(r){
+	            $("#idmodelo").html(r);
+	            $('#idmodelo').selectpicker('refresh');
+
+	});
+    
+     $.post("../ajax/articulo.php?op=selectMarca", function(r){
+	            $("#idmarca").html(r);
+	            $('#idmarca').selectpicker('refresh');
+
+	});
 	$("#imagenmuestra").hide();
 }
 
@@ -26,7 +43,6 @@ function limpiar()
 
 	$("#nombre").val("");
 	$("#descripcion").val("");
-    $("#medida").val("");
 	$("#imagenmuestra").attr("src","");
 	$("#imagenactual").val("");
 	$("#print").hide();
@@ -120,7 +136,12 @@ function mostrar(idarticulo)
 
 		$("#idcategoria").val(data.idcategoria);
 		$('#idcategoria').selectpicker('refresh');
-        $("#medida").val(data.medida);
+        $("#idcolor").val(data.idcolor);
+		$('#idcolor').selectpicker('refresh');
+        $("#idmodelo").val(data.idmodelo);
+		$('#idmodelo').selectpicker('refresh');
+        $("#idmarca").val(data.idmarca);
+		$('#idmarca').selectpicker('refresh');
 		$("#nombre").val(data.nombre);
 		$("#descripcion").val(data.descripcion);
 		$("#imagenmuestra").show();
