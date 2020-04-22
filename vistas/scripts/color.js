@@ -14,7 +14,8 @@ function init(){
 //Función limpiar
 function limpiar()
 {
-	$("#iddetalle_venta").val("");
+	$("#idcolor").val("");
+	$("#nombre").val("");
 	$("#descripcion").val("");
 }
 
@@ -33,7 +34,7 @@ function mostrarform(flag)
 	{
 		$("#listadoregistros").show();
 		$("#formularioregistros").hide();
-		$("#btnagregar").hide();
+		$("#btnagregar").show();
 	}
 }
 
@@ -54,11 +55,11 @@ function listar()
 	    dom: 'Bfrtip',//Definimos los elementos del control de tabla
 	    buttons: [
 
-
+		            'pdf'
 		        ],
 		"ajax":
 				{
-					url: '../ajax/bebida.php?op=listar',
+					url: '../ajax/color.php?op=listar',
 					type : "get",
 					dataType : "json",
 					error: function(e){
@@ -79,7 +80,7 @@ function guardaryeditar(e)
 	var formData = new FormData($("#formulario")[0]);
 
 	$.ajax({
-		url: "../ajax/bebida.php?op=guardaryeditar",
+		url: "../ajax/color.php?op=guardaryeditar",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -96,26 +97,41 @@ function guardaryeditar(e)
 	limpiar();
 }
 
-function mostrar(iddetalle_venta)
+function mostrar(idcolor)
 {
-	$.post("../ajax/bebida.php?op=mostrar",{iddetalle_venta : iddetalle_venta}, function(data, status)
+	$.post("../ajax/color.php?op=mostrar",{idcolor : idcolor}, function(data, status)
 	{
 		data = JSON.parse(data);
 		mostrarform(true);
 
+		$("#nombre").val(data.nombre);
 		$("#descripcion").val(data.descripcion);
-        $("#iddetalle_venta").val(data.iddetalle_venta);
+ 		$("#idcolor").val(data.idcolor);
 
  	})
 }
 
 //Función para desactivar registros
-function eliminar(iddetalle_venta)
+function desactivar(idcolor)
 {
-	bootbox.confirm("¿Está Seguro de Cambiar de estado?", function(result){
+	bootbox.confirm("¿Está Seguro de desactivar el Color?", function(result){
 		if(result)
         {
-        	$.post("../ajax/bebida.php?op=desactivar", {iddetalle_venta : iddetalle_venta}, function(e){
+        	$.post("../ajax/color.php?op=desactivar", {idcolor : idcolor}, function(e){
+        		bootbox.alert(e);
+	            tabla.ajax.reload();
+        	});
+        }
+	})
+}
+
+//Función para activar registros
+function activar(idcolor)
+{
+	bootbox.confirm("¿Está Seguro de activar el Color?", function(result){
+		if(result)
+        {
+        	$.post("../ajax/color.php?op=activar", {idcolor : idcolor}, function(e){
         		bootbox.alert(e);
 	            tabla.ajax.reload();
         	});
