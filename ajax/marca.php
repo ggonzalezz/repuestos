@@ -1,5 +1,5 @@
 <?php 
-require_once "../marcas/Marca.php";
+require_once "../modelos/Marca.php";
 
 $marca=new Marca();
 
