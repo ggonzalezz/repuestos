@@ -65,6 +65,8 @@ function mostrarform(flag)
 		$("#listadoregistros").show();
 		$("#formularioregistros").hide();
 		$("#btnagregar").show();
+        $("#btnGuardar").hide();
+		$("#btnCancelar").hide();
          $("#referencia").show();
          $("#referencias").show();
 	}

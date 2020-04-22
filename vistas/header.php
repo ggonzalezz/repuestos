@@ -30,7 +30,7 @@ if (strlen(session_id()) < 1)
     <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-select.min.css">
 
   </head>
-  <body class="hold-transition skin-green-light sidebar-mini">
+  <body class="hold-transition skin-red-light sidebar-mini">
     <div class="wrapper">
 
       <header class="main-header">
@@ -229,12 +229,12 @@ if (strlen(session_id()) < 1)
             {
               echo '<li class="treeview">
               <a href="#">
-                <i class="fa fa-refresh"></i> <span>Cocineros & Bartends</span>
+                <i class="fa fa-refresh"></i> <span>Otras Consultas</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="cocina.php"><i class="fa fa-cutlery"></i>Cocina</a></li>
-                <li><a href="bebida.php"><i class="fa fa-beer"></i>Bebida</a></li>
+                <li><a href="otra.php"><i class="fa fa-check"></i>Otras consultas</a></li>
+                <li><a href="otrados.php"><i class="fa fa-check"></i>Otras Consultas</a></li>
               </ul>
             </li>';
             }

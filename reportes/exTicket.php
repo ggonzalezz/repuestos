@@ -32,11 +32,11 @@ $reg = $rspta->fetch_object();
 
 //Establecemos los datos de la empresa
 $alerta = "Esto no es una Factura";
-$empresa = "T21 Restaurante";
+$empresa = "REPUESTOS";
 //$documento = "20477157772";
 $direccion = "Calle Transito Rojas B entre 1a y 2da. Avenida Zona 6, Tercer y Cuarto Nivel Jalapa, Jalapa";
-$telefono = "4991 7293";
-$email = "jalapat21t21@gmail.com";
+$telefono = "0000-0000";
+$email = "repuestos1@gmail.com";
 
 ?>
 <div class="zona_impresion">
@@ -61,7 +61,7 @@ $email = "jalapat21t21@gmail.com";
     </tr>
     <tr>
         <!-- Mostramos los datos del cliente en el documento HTML -->
-        <td>Mesa: <?php echo $reg->mesa; ?></td>
+        <td>Cliente: <?php echo $reg->cliente; ?></td>
     </tr>
    
     <tr>
@@ -121,9 +121,7 @@ $email = "jalapat21t21@gmail.com";
      <tr>
       <td colspan="3" align="center">Dirección:_____________</td>
     </tr>
-    <tr>
-      <td colspan="3" align="center">Propina Segurida:_______</td>
-    </tr>
+  
     
 </table>
 <br>
