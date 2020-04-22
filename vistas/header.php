@@ -114,7 +114,7 @@ if (strlen(session_id()) < 1)
               </a>
               <ul class="treeview-menu">
                 <li><a href="articulo.php"><i class="fa fa-car"></i> Artículos</a></li>
-                <li><a href="categoria.php"><i class="fa fa-microchip"></i> Categorías</a></li>
+                <li><a href="categoria.php"><i class="fa fa-check"></i> Categorías</a></li>
                 <li><a href="color.php"><i class="fa fa-paint-brush"></i> Colores</a></li>
 
               </ul>
