@@ -24,8 +24,6 @@ if ($_SESSION['ventas']==1)
                   <div class="box">
                     <div class="box-header with-border">
                           <h1 class="box-title">Venta <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar Venta</button></h1>
-                        
-                          <a class="btn btn-success" href="detalleventa.php" id="referencias">Administración de Detalles</a>
 
                         <div class="box-tools pull-right">
                         </div>
@@ -37,7 +35,7 @@ if ($_SESSION['ventas']==1)
                           <thead>
                             <th>Opciones</th>
                             <th>Fecha</th>
-                            <th>Mesa</th>
+                            <th>Cliente</th>
                             <th>Usuario</th>
                             <th>Documento</th>
                             <th>Número</th>
@@ -49,7 +47,7 @@ if ($_SESSION['ventas']==1)
                           <tfoot>
                             <th>Opciones</th>
                             <th>Fecha</th>
-                            <th>Mesa</th>
+                            <th>Cliente</th>
                             <th>Usuario</th>
                             <th>Documento</th>
                             <th>Número</th>
@@ -61,9 +59,9 @@ if ($_SESSION['ventas']==1)
                     <div class="panel-body" style="height: 400px;" id="formularioregistros">
                         <form name="formulario" id="formulario" method="POST">
                           <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                            <label>Mesa(*):</label>
+                            <label>Cliente(*):</label>
                             <input type="hidden" name="idventa" id="idventa">
-                            <select id="idmesa" name="idmesa" class="form-control selectpicker" data-live-search="true" required>
+                            <select id="idcliente" name="idcliente" class="form-control selectpicker" data-live-search="true" required>
 
                             </select>
                           </div>

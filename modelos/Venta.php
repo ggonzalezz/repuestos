@@ -10,12 +10,12 @@ Class Venta
 
 	}
 
-    /////$idmesa,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$total_venta,$idarticulo,$cantidad,$precio_venta,
+    /////$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$total_venta,$idarticulo,$cantidad,$precio_venta,
 	//Implementamos un método para insertar registros
-	public function insertar($idmesa,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$total_venta,$idarticulo,$cantidad,$precio_venta,$descuento)
+	public function insertar($idcliente,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$total_venta,$idarticulo,$cantidad,$precio_venta,$descuento)
 	{
-		$sql="INSERT INTO venta (idmesa,idusuario,tipo_comprobante,serie_comprobante,num_comprobante,fecha_hora,total_venta,estado)
-		VALUES ('$idmesa','$idusuario','$tipo_comprobante','$serie_comprobante','$num_comprobante','$fecha_hora','$total_venta','Aceptado')";
+		$sql="INSERT INTO venta (idcliente,idusuario,tipo_comprobante,serie_comprobante,num_comprobante,fecha_hora,total_venta,estado)
+		VALUES ('$idcliente','$idusuario','$tipo_comprobante','$serie_comprobante','$num_comprobante','$fecha_hora','$total_venta','Aceptado')";
 		//return ejecutarConsulta($sql);
 		$idventanew=ejecutarConsulta_retornarID($sql);
 
@@ -36,9 +36,9 @@ Class Venta
 
 
     //Implementamos un método para editar registros
-	public function editar($idventa,$idmesa,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$total_venta,$idarticulo,$cantidad,$precio_venta,$descuento)
+	public function editar($idventa,$idcliente,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$total_venta,$idarticulo,$cantidad,$precio_venta,$descuento)
 	{
-		$sql="UPDATE venta SET idmesa='$idmesa',idusuario='$idusuario',tipo_comprobante='$tipo_comprobante',numero_comprobante='$num_comprobante',fecha_hora='$fecha_hora',total_venta='$total_venta',estado='Aceptado' WHERE idventa='$idventa'";
+		$sql="UPDATE venta SET idcliente='$idcliente',idusuario='$idusuario',tipo_comprobante='$tipo_comprobante',numero_comprobante='$num_comprobante',fecha_hora='$fecha_hora',total_venta='$total_venta',estado='Aceptado' WHERE idventa='$idventa'";
 		ejecutarConsulta($sql);
 
 		//Eliminamos todos los permisos asignados para volverlos a registrar
@@ -86,7 +86,7 @@ Class Venta
 	//Implementar un método para mostrar los datos de un registro a modificar
 	public function mostrar($idventa)
 	{
-		$sql="SELECT v.idventa,DATE(v.fecha_hora) as fecha,v.idmesa,p.nombre as mesa,u.idusuario,u.nombre as usuario,v.tipo_comprobante,v.serie_comprobante,v.num_comprobante,v.total_venta,v.estado FROM venta v INNER JOIN mesa p ON v.idmesa=p.idmesa INNER JOIN usuario u ON v.idusuario=u.idusuario WHERE v.idventa='$idventa'";
+		$sql="SELECT v.idventa,DATE(v.fecha_hora) as fecha,v.idcliente,p.nombre as cliente,u.idusuario,u.nombre as usuario,v.tipo_comprobante,v.serie_comprobante,v.num_comprobante,v.total_venta,v.estado FROM venta v INNER JOIN persona p ON v.idcliente=p.idpersona INNER JOIN usuario u ON v.idusuario=u.idusuario WHERE v.idventa='$idventa'";
 		return ejecutarConsultaSimpleFila($sql);
 	}
 
@@ -99,23 +99,25 @@ Class Venta
 	//Implementar un método para listar los registros
 	public function listar()
 	{
-		$sql="SELECT v.idventa,DATE(v.fecha_hora) as fecha,v.idmesa,p.nombre as mesa,u.idusuario,u.nombre as usuario,v.tipo_comprobante,v.serie_comprobante,v.num_comprobante,sum(cantidad*precio_venta) as total_venta,v.estado FROM venta v INNER JOIN mesa p ON v.idmesa=p.idmesa INNER JOIN usuario u ON v.idusuario=u.idusuario
+		$sql="SELECT v.idventa,DATE(v.fecha_hora) as fecha,v.idcliente,p.nombre as cliente,u.idusuario,u.nombre as usuario,v.tipo_comprobante,v.serie_comprobante,v.num_comprobante,sum(cantidad*precio_venta) as total_venta,v.estado FROM venta v INNER JOIN persona p ON v.idcliente=p.idpersona INNER JOIN usuario u ON v.idusuario=u.idusuario
 INNER JOIN detalle_venta dv on v.idventa= dv.idventa
 WHERE v.condicion=1
 AND
 v.estado = 'Aceptado'
 GROUP by dv.idventa
-ORDER by v.idventa desc";
+ORDER by v.idventa desc
+";
 		return ejecutarConsulta($sql);
 	}
 
 	public function ventacabecera($idventa){
-		$sql="SELECT v.idventa,v.idmesa,p.nombre as mesa,p.descripcion,v.idusuario,u.nombre as usuario,v.tipo_comprobante,v.serie_comprobante,v.num_comprobante,date(v.fecha_hora) as fecha,sum(cantidad*precio_venta) as total_venta
+		$sql="SELECT v.idventa,v.idcliente,p.nombre as cliente,v.idusuario,u.nombre as usuario,v.tipo_comprobante,v.serie_comprobante,v.num_comprobante,date(v.fecha_hora) as fecha,sum(cantidad*precio_venta) as total_venta
 
-FROM venta v INNER JOIN mesa p ON v.idmesa=p.idmesa INNER JOIN usuario u ON v.idusuario=u.idusuario
+FROM venta v INNER JOIN persona p ON v.idcliente=p.idpersona INNER JOIN usuario u ON v.idusuario=u.idusuario
 INNER JOIN detalle_venta dv on v.idventa= dv.idventa
 WHERE v.idventa='$idventa'
-GROUP by v.idventa";
+GROUP by v.idventa
+";
 		return ejecutarConsulta($sql);
 	}
 

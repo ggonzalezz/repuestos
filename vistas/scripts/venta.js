@@ -11,17 +11,16 @@ function init(){
 		guardaryeditar(e);
 	});
 	//Cargamos los items al select cliente
-	$.post("../ajax/venta.php?op=selectMesa", function(r){
-	            $("#idmesa").html(r);
-	            $('#idmesa').selectpicker('refresh');
+	$.post("../ajax/venta.php?op=selectCliente", function(r){
+	            $("#idcliente").html(r);
+	            $('#idcliente').selectpicker('refresh');
 	});
 }
 
 //Función limpiar
 function limpiar()
 {
-	$("#idmesa").val("");
-	$("#mesa").val("");
+	$("#idcliente").val("");
 	$("#serie_comprobante").val("");
 	$("#num_comprobante").val("");
 
@@ -166,8 +165,8 @@ function mostrar(idventa)
 		data = JSON.parse(data);
 		mostrarform(true);
 
-		$("#idmesa").val(data.idmesa);
-		$("#idmesa").selectpicker('refresh');
+		$("#idcliente").val(data.idcliente);
+		$("#idcliente").selectpicker('refresh');
 		$("#tipo_comprobante").val(data.tipo_comprobante);
 		$("#tipo_comprobante").selectpicker('refresh');
 		$("#serie_comprobante").val(data.serie_comprobante);

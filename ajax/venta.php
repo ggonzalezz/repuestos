@@ -7,7 +7,7 @@ require_once "../modelos/Venta.php";
 $venta=new Venta();
 
 $idventa=isset($_POST["idventa"])? limpiarCadena($_POST["idventa"]):"";
-$idmesa=isset($_POST["idmesa"])? limpiarCadena($_POST["idmesa"]):"";
+$idcliente=isset($_POST["idcliente"])? limpiarCadena($_POST["idcliente"]):"";
 $idusuario=$_SESSION["idusuario"];
 $tipo_comprobante=isset($_POST["tipo_comprobante"])? limpiarCadena($_POST["tipo_comprobante"]):"";
 $serie_comprobante=isset($_POST["serie_comprobante"])? limpiarCadena($_POST["serie_comprobante"]):"";
@@ -18,7 +18,7 @@ $total_venta=isset($_POST["total_venta"])? limpiarCadena($_POST["total_venta"]):
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($idventa)){
-			$rspta=$venta->insertar($idmesa,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$total_venta,$_POST["idarticulo"],$_POST["cantidad"],$_POST["precio_venta"],$_POST["descuento"]);
+			$rspta=$venta->insertar($idcliente,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$total_venta,$_POST["idarticulo"],$_POST["cantidad"],$_POST["precio_venta"],$_POST["descuento"]);
 			echo $rspta ? "Venta registrada" : "No se pudieron registrar todos los datos de la venta";
 		}
 		else {
@@ -93,7 +93,7 @@ switch ($_GET["op"]){
  					'<button class="btn btn-warning" onclick="mostrar('.$reg->idventa.')"><i class="fa fa-eye"></i></button>').
  					'<a target="_blank" href="'.$url.$reg->idventa.'"> <button class="btn btn-info"><i class="fa fa-file"></i></button></a>',
  				"1"=>$reg->fecha,
- 				"2"=>$reg->mesa,
+ 				"2"=>$reg->cliente,
  				"3"=>$reg->usuario,
  				"4"=>$reg->tipo_comprobante,
  				"5"=>$reg->serie_comprobante.'-'.$reg->num_comprobante,
@@ -111,15 +111,15 @@ switch ($_GET["op"]){
 
 	break;
 
-	case 'selectMesa':
-		require_once "../modelos/Mesa.php";
-		$mesa = new Mesa();
+	case 'selectCliente':
+		require_once "../modelos/Persona.php";
+		$persona = new Persona();
 
-		$rspta = $mesa->listarm();
+		$rspta = $persona->listarC();
 
 		while ($reg = $rspta->fetch_object())
 				{
-				echo '<option value=' . $reg->idmesa . '>' . $reg->nombre . '</option>';
+				echo '<option value=' . $reg->idpersona . '>' . $reg->nombre . '</option>';
 				}
 	break;
 
